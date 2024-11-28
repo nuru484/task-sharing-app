@@ -39,7 +39,8 @@ export const signup = async (
     } else {
       throw new Error(data.message || 'An error occurred during signup.');
     }
-  } catch (error) {
+  } catch (error: any) {
+    // Explicitly typing error as any
     // Log the error to help with debugging
     console.error(error);
     throw new Error(error.message || 'An error occurred while signing up.');

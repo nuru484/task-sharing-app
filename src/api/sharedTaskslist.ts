@@ -1,4 +1,3 @@
-// src/api/sharedTaskLists.ts
 const serverURL = import.meta.env.VITE_SERVER_URL;
 
 /**
@@ -32,7 +31,8 @@ export const shareTaskList = async (
         data.message || 'An error occurred while sharing the task list.'
       );
     }
-  } catch (error) {
+  } catch (error: any) {
+    // Using `any` to handle errors
     console.error(error);
     throw new Error(
       error.message || 'An error occurred while sharing the task list.'
@@ -66,7 +66,7 @@ export const fetchSharedTaskLists = async () => {
         data.message || 'An error occurred while fetching shared task lists.'
       );
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
     throw new Error(
       error.message || 'An error occurred while fetching shared task lists.'
@@ -103,7 +103,7 @@ export const fetchSharedTaskList = async (taskListId: string) => {
         data.message || 'An error occurred while fetching shared task list.'
       );
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
     throw new Error(
       error.message || 'An error occurred while fetching shared task list.'
@@ -143,7 +143,7 @@ export const fetchSharedUsers = async (taskListId: string) => {
         data.message || 'An error occurred while fetching shared users.'
       );
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
     throw new Error(
       error.message || 'An error occurred while fetching shared users.'
@@ -184,7 +184,7 @@ export const updateSharedTaskList = async (
         data.message || 'An error occurred while updating shared task list.'
       );
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
     throw new Error(
       error.message || 'An error occurred while updating shared task list.'
@@ -225,7 +225,7 @@ export const revokeSharedTaskListAccess = async (
         data.message || 'An error occurred while revoking user access.'
       );
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
     throw new Error(
       error.message || 'An error occurred while revoking user access.'

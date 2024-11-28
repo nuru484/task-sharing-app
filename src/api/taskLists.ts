@@ -1,4 +1,3 @@
-// src/api/taskLists.ts
 const serverURL = import.meta.env.VITE_SERVER_URL;
 
 export const fetchTaskLists = async () => {
@@ -25,7 +24,8 @@ export const fetchTaskLists = async () => {
         data.message || 'An error occurred while fetching task lists.'
       );
     }
-  } catch (error) {
+  } catch (error: any) {
+    // Explicitly typing error as any
     console.error(error);
     throw new Error(
       error.message || 'An error occurred while fetching task lists.'
@@ -57,7 +57,8 @@ export const createTaskList = async (name: string) => {
         data.message || 'An error occurred while creating task list.'
       );
     }
-  } catch (error) {
+  } catch (error: any) {
+    // Explicitly typing error as any
     console.error(error);
     throw new Error(
       error.message || 'An error occurred while creating task list.'
@@ -88,7 +89,8 @@ export const fetchTaskList = async (taskListId: string) => {
         data.message || 'An error occurred while fetching task list.'
       );
     }
-  } catch (error) {
+  } catch (error: any) {
+    // Explicitly typing error as any
     console.error(error);
     throw new Error(
       error.message || 'An error occurred while fetching task list.'
@@ -120,7 +122,8 @@ export const updateTaskList = async (taskListId: string, name: string) => {
         data.message || 'An error occurred while updating task list.'
       );
     }
-  } catch (error) {
+  } catch (error: any) {
+    // Explicitly typing error as any
     console.error(error);
     throw new Error(
       error.message || 'An error occurred while updating task list.'
@@ -151,7 +154,8 @@ export const deleteTaskList = async (taskListId: string) => {
         data.message || 'An error occurred while deleting task list.'
       );
     }
-  } catch (error) {
+  } catch (error: any) {
+    // Explicitly typing error as any
     console.error(error);
     throw new Error(
       error.message || 'An error occurred while deleting task list.'

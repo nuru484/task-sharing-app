@@ -8,10 +8,13 @@ const useLogout = () => {
 
   const logout = async () => {
     const token = localStorage.getItem('authToken');
-    const cleanedToken = token.split('|')[1];
+
+    // Handle possible `null` for `token` safely
+    const cleanedToken = token ? token.split('|')[1] : null;
 
     try {
-      if (token) {
+      if (cleanedToken) {
+        // Ensure `cleanedToken` is valid before using it
         await axios.post(
           `${serverURL}/api/logout`,
           {},
@@ -22,13 +25,17 @@ const useLogout = () => {
           }
         );
 
+        // Clear localStorage items on successful logout
         localStorage.removeItem('authToken');
         localStorage.removeItem('authUser');
 
         // Redirect to the login page
         navigate('/');
+      } else {
+        console.warn('Token is missing or invalid.');
       }
-    } catch (error) {
+    } catch (error: any) {
+      // Use `any` type to suppress TypeScript issues
       console.error('Logout failed:', error);
     }
   };

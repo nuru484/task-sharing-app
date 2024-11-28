@@ -27,7 +27,8 @@ export const fetchTasks = async (taskListId: string) => {
         data.message || 'An error occurred while fetching tasks.'
       );
     }
-  } catch (error) {
+  } catch (error: any) {
+    // Explicitly typing error as any
     console.error(error);
     throw new Error(error.message || 'An error occurred while fetching tasks.');
   }
@@ -62,7 +63,8 @@ export const createTask = async (
     } else {
       throw new Error(data.message || 'An error occurred while creating task.');
     }
-  } catch (error) {
+  } catch (error: any) {
+    // Explicitly typing error as any
     console.error(error);
     throw new Error(error.message || 'An error occurred while creating task.');
   }
@@ -90,7 +92,8 @@ export const fetchTask = async (taskId: string) => {
     } else {
       throw new Error(data.message || 'An error occurred while fetching task.');
     }
-  } catch (error) {
+  } catch (error: any) {
+    // Explicitly typing error as any
     console.error(error);
     throw new Error(error.message || 'An error occurred while fetching task.');
   }
@@ -122,7 +125,8 @@ export const updateTask = async (
     } else {
       throw new Error(data.message || 'An error occurred while updating task.');
     }
-  } catch (error) {
+  } catch (error: any) {
+    // Explicitly typing error as any
     console.error(error);
     throw new Error(error.message || 'An error occurred while updating task.');
   }
@@ -150,7 +154,8 @@ export const deleteTask = async (taskId: string) => {
     } else {
       throw new Error(data.message || 'An error occurred while deleting task.');
     }
-  } catch (error) {
+  } catch (error: any) {
+    // Explicitly typing error as any
     console.error(error);
     throw new Error(error.message || 'An error occurred while deleting task.');
   }

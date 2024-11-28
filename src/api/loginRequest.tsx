@@ -30,7 +30,8 @@ export const login = async (email: string, password: string) => {
     } else {
       throw new Error(data.message || 'An error occurred during login.');
     }
-  } catch (error) {
+  } catch (error: any) {
+    // Explicitly typing error as any
     // Log the error to help with debugging
     console.error(error);
     throw new Error(error.message || 'An error occurred while logging in.');
