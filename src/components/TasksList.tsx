@@ -92,10 +92,13 @@ const TasksList: React.FC = () => {
     if (!editingTask) return;
 
     try {
+      // Ensure that all necessary fields are updated
       const updatedTask = await updateTask(String(editingTask.id), {
         title: editingTask.title,
         description: editingTask.description,
+        is_complete: editingTask.is_complete, // Ensure is_complete is passed
       });
+
       setTaskLists((prev) =>
         prev.map((list) =>
           list.tasks.some((task) => task.id === editingTask.id)
@@ -326,7 +329,14 @@ const TasksList: React.FC = () => {
                             list.id === taskList.id
                               ? {
                                   ...list,
-                                  tasks: [...list.tasks, { ...newTask }],
+                                  tasks: [
+                                    ...list.tasks,
+                                    {
+                                      ...newTask,
+                                      is_complete: newTask.is_complete ?? false, // Default value
+                                      task_list_id: taskList.id, // Set task_list_id
+                                    },
+                                  ],
                                 }
                               : list
                           )
